@@ -30,6 +30,23 @@ body {
     height: 40px;
     line-height: 40px;
 }
+.search-form input{
+    width: 174px;
+    height:30px;
+    box-sizing: border-box;
+    padding: 0 15px 0 30px;
+    margin-right:-10px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background:#fff url(https://cn.vuejs.org/images/search.png) 8px 5px no-repeat;
+    background-size:20px;
+    outline: none;
+}
+.search-form input:focus{
+    border-style:solid;
+    border-color: #42b983;
+}
 
 .nav li{
     display: inline-block;
@@ -52,8 +69,18 @@ a{
     border-right: 4px solid transparent;
     border-top: 5px solid #4f5959;
 }
-.nav-link{
-    padding-bottom: 3px;
+
+.nav .nav-link-team{
+    padding-bottom:3px;
+}
+.nav .nav-link-team:hover{
+    border-bottom: solid #42b983 3px;
+}
+.nav .nav-link-contribute{
+    padding-bottom:3px;
+}
+.nav .nav-link-contribute:hover{
+    border-bottom: solid #42b983 3px;
 }
 .nav .nav-dropdown {
     display: none;
@@ -73,11 +100,17 @@ a{
     width: 180px;
 
 }
+.nav li:hover .nav-dropdown{
+    display: block;
+}
 .nav .nav-dropdown li{
     line-height: 25px;
     margin: 0;
     padding-left: 10px;
     display: block;
+}
+.nav .nav-dropdown ul>li:hover a{
+    color: #42b983;
 }
 .nav .nav-dropdown li > ul{
     padding-left: 0;
@@ -185,25 +218,28 @@ a.button.gray{
     text-align: center;
    
 }
-.highlights .highlights-inner .point{
+.highlights .highlights-inner .point, .highlights .highlights-inner .point1{
     width: 33%;
     display: inline-block;
     vertical-align: top;
     box-sizing: border-box;
     padding: 0 2em;
-   float: left;
+    float: left;
+}
+.highlights .highlights-inner .point1{
+    margin-top: 8px;
 }
 .clear{
     clear:both;
 }
-.highlights .point h2{
+.highlights .point h2,.highlights .point1 h2{
     color: #42b983;
     font-size: 1.5em;
     font-weight: 400;
     margin: 0;
     padding: 0.5em 0;
 }
-.highlights .point p{
+.highlights .point p,.highlights .point1 p{
     color: #4f5959;
 }
 .sponsor{
@@ -257,6 +293,15 @@ a.button.gray{
     max-width: 100px;
     max-height: 60px;
 }
+.sponsor img{
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+    opacity: 0.66;
+}
+.sponsor.active img{
+    filter: none;
+    opacity: 1;
+}
 .news{
     padding: 40px 20px 70px;
     text-align: center;
@@ -280,6 +325,12 @@ a.button.gray{
     border-radius: 50px;
     border: 1px solid #ccc;
     font-size: 16px;
+    outline: none;
+}
+.news .newsletter-input:focus{
+    border-style:solid;
+    border-color: #42b983;
+
 }
 .news .newsletter-button{
     position: absolute;
