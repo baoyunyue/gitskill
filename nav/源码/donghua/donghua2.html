@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>donghua2</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            ul,li{
+                list-style: none;
+            }
+            ul li{
+                width: 200px;
+                height:100px;
+                background:yellowgreen;
+                margin-bottom: 20px;
+                border: 4px solid #000;
+            }
+        
+        </style>
+        <script>
+            window.onload=function(){
+                var aLi=document.getElementsByTagName('li');
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].timer=null;
+                    aLi[i].onmouseover=function(){
+                        startMove(this,400);
+                    }
+                    aLi[i].onmouseout=function(){
+                        startMove(this,200);
+                    }
+                }
+            }
+            function getStyle(obj,attr){
+                if(obj.currentStyle){
+                    return obj.currentStyle[attr];
+                }
+                else{
+                    return getComputedStyle(obj,false)[attr];
+                }
+            }
+            //var timer=null;  
+            var alpha = 30;
+            function startMove(obj,iTarget){
+                clearInterval(obj.timer);
+                obj.timer=setInterval(function(){
+                    var icu=parseInt(getStyle(obj,'height'));
+                    var speed=(iTarget-icu)/8;
+                   
+                    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                    if(icu==iTarget){
+                        clearInterval(obj.timer);
+                    }
+                    else{
+                        obj.style['height']= icu + speed +'px';
+                    }
+                },30)
+            }
+        </script>
+    </head>
+    <body>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </body>
+</html>

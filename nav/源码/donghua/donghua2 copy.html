@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title>donghua2</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            ul,li{
+                list-style: none;
+            }
+            ul li{
+                width: 200px;
+                height:100px;
+                background:yellowgreen;
+                margin-bottom: 20px;
+                border: 4px solid #000;
+                opacity: 0.3;
+            }
+        
+        </style>
+        <script>
+            window.onload=function(){
+                /*var aLi=document.getElementsByTagName('li');
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].timer=null;
+                    aLi[i].onmouseover=function(){
+                        startMove(this,400);
+                    }
+                    aLi[i].onmouseout=function(){
+                        startMove(this,200);
+                    }
+                }
+            }*/
+            var Li1=document.getElementById('Li1');
+            var Li2=document.getElementById('Li2');
+            Li1.onmouseover=function(){
+                startMove(this,'opacity',100);
+                }
+            Li1.onmouseout=function(){
+                startMove(this,'opacity',30);
+                }
+
+
+            function getStyle(obj,attr){
+                if(obj.currentStyle){
+                    return obj.currentStyle[attr];
+                }
+                else{
+                    return getComputedStyle(obj,false)[attr];
+                }
+            }
+            //var timer=null;  
+            var alpha = 30;
+            function startMove(obj,json,iTarget){
+                clearInterval(obj.timer);
+                obj.timer=setInterval(function(){
+                    for(var attr in json){
+                    var icu = 0;
+                    if(attr=='opacity'){
+                        icu=Math.round((getStyle(obj,attr))*100);
+
+                    }
+                    else{
+                        icu=parseInt(getStyle(obj,attr));
+                    }
+                    var speed=(json[attr]-icu)/8;
+                   
+                    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                    if(icu==json[attr]){
+                        clearInterval(obj.timer);
+                    }
+                    else{
+                        if(attr=='opacity'){
+                            obj.style.opacity=(icu+speed)/100;
+                        }else{
+                            obj.style[attr]= icu + speed +'px';
+
+                        }
+                        
+                    }}
+                },30)
+            }}
+        </script>
+    </head>
+    <body>
+        <ul>
+            <li id="Li1"></li>
+            
+           
+        </ul>
+    </body>
+</html>
