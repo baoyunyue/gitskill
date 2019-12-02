@@ -14,7 +14,7 @@ function Swipe(container) {
     var swipe = {};
 
     // li页面数量
-    var slides = element.find("li");
+    var slides = element.find(">"); 
 
     // 获取容器尺寸
     var width = container.width();
@@ -24,7 +24,7 @@ function Swipe(container) {
     element.css({
         width: (slides.length * width) + 'px',
         height: height + 'px'
-    })
+    });
 
     // 设置每一个页面li的宽度
     $.each(slides, function(index) {
@@ -44,7 +44,7 @@ function Swipe(container) {
             'transform'                  : 'translate3d(-' + x + 'px,0px,0px)'
         });
         return this;
-    }
+    };
 
     return swipe;
 }
